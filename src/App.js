@@ -13,11 +13,24 @@ function Api() {
   const [skyLogo, setSkyLogo] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [xmlData, setXmlData] = useState(null);
   var skyMainEvent = [];
   var channelLogo = [];
   
-  useEffect(() => {
-    var xml = new XMLParser().parseFromString(xml_data);
+  
+   useEffect(() => {
+
+    // const xml = new XMLParser().parseFromString(xml_data);
+
+    // Parse data from url
+    fetch('https://iptv-org.github.io/epg/guides/en/sky.com.xml')
+      .then(response => response.text())
+      .then(text => {
+
+        const xml = new XMLParser().parseFromString(text, 'application/xml');
+    setData(xml);
+
+    console.log(xml)
     const dataLength = xml.children.length
     const today = new Date();
     const currentTime = today.getHours() + ":" + today.getMinutes()
@@ -68,6 +81,8 @@ function Api() {
     setData(xml)
     setSkyLogo(channelLogo)
     setskyMain(skyMainEvent)
+  })
+
   }, [])
 
     if (loading) return "Loading...";

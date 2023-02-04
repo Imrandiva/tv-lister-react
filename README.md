@@ -1,8 +1,13 @@
-# Getting Started with Create React App
+<h1>TV-guide-webapp</h1>
+
+Using epg infomation online, this personal project aims to show the tv guides of relevant channels to myself, including Sky Sports and Viasat Sport.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+To install all the necessary modules run:
+
+### `npm install`
 
 In the project directory, you can run:
 
